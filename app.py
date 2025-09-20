@@ -11,4 +11,5 @@ def health():
     return jsonify(status="ok", message="QuakeWatch is healthy"), 200
 
 if __name__ == "__main__":
-app.run(host="0.0.0.0", port=8000, debug=True)
+    # Gunicorn will normally run this in containers, but for local dev:
+    app.run(host="0.0.0.0", port=8000, debug=True)
