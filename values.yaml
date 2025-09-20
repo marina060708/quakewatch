@@ -1,0 +1,27 @@
+replicaCount: 2
+
+image:
+  repository: quakewatch
+  pullPolicy: Never
+  tag: "latest"
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30007
+
+resources: {}
+
+livenessProbe:
+  enabled: true
+  path: /
+  port: "5000"  # <-- quoted
+  initialDelaySeconds: 10
+  periodSeconds: 5
+
+readinessProbe:
+  enabled: true
+  path: /
+  port: "5000"
+  initialDelaySeconds: 5
+  periodSeconds: 5
